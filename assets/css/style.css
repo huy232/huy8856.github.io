@@ -396,6 +396,10 @@ display: block;
     float: right;
 }
 
+.contact-submit-btn{
+    font-size: 18px;
+}
+
 /* Map Section */
 .map-section img{
     width: 100%;
