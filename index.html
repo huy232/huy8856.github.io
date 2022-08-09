@@ -47,7 +47,7 @@
         <div id="slider">
             <div class="text-content">
                 <h2 class="text-heading">Handy Game Device</h2>
-                <div class="text-description">Playing game everytime with this device!</div>
+                <div class="text-description">Playing game every time with this device!</div>
             </div>
 
         </div>
@@ -111,7 +111,7 @@
                         <h3 class="place-heading">New York</h3>
                         <p class="place-time">Fri 27 Nov 2021</p>
                         <p class="place-desc">Present description</p>
-                        <a href="#" class="btn s-full-width">Buy Ticket</a>
+                        <button class="btn s-full-width js-buy-ticket">Buy Ticket</button>
                     </div>
                 </div>
                 <div class="col col-third s-col-full mt-16">
@@ -121,7 +121,7 @@
                         <h3 class="place-heading">New York</h3>
                         <p class="place-time">Fri 28 Nov 2021</p>
                         <p class="place-desc">Present description</p>
-                        <a href="#" class="btn s-full-width">Buy Ticket</a>
+                        <button class="btn s-full-width js-buy-ticket">Buy Ticket</button>
                     </div>
                 </div>
                 <div class="col col-third s-col-full mt-16">
@@ -131,7 +131,7 @@
                         <h3 class="place-heading">San Francisco</h3>
                         <p class="place-time">Fri 29 Nov 2021</p>
                         <p class="place-desc">Present description</p>
-                        <a href="#" class="btn s-full-width">Buy Ticket</a>
+                        <button class="btn s-full-width js-buy-ticket">Buy Ticket</button>
                     </div>
                 </div>
                 </div>
@@ -156,10 +156,10 @@
                         <form action="">
                             <div class="row">
                                 <div class="col col-half s-col-full">
-                                    <input type="text" name="" placeholder="Name" required id="" class="form-control">
+                                    <input type="text" name="" placeholder="Name" required id="contact-name" class="form-control">
                                 </div>
                                 <div class="col col-half s-col-full s-mt-8">
-                                    <input type="email" name="" placeholder="Email" required id="" class="form-control">
+                                    <input type="email" name="" placeholder="Email" required id="contact-email" class="form-control">
                                 </div>
                             </div>
                             <div class="row mt-8">
@@ -187,6 +187,42 @@
                 <a href="#"><i class="ti-linkedin"></i></a>
             </div>
             <p class="copyright">Powered by <a href="">w3.css</a></p>
+        </div>
+        
+        <div class="js-modal">
+            <div class="modal-container js-modal-container">
+                <div class="modal-close js-modal-close">
+                    <i class="ti-close"></i>
+                </div>
+
+                <header class="modal-header">
+                    <i class="modal-heading-icon ti-bag"></i>
+                    Tickets
+                </header>
+
+                <div class="modal-body">
+                    <label for="ticket-quantity" class="modal-label">
+                        <i class="ti-shopping-cart"></i>
+                        Tickets, 15$ per person
+                    </label>
+                    <input id="ticket-quantity" type="text" class="modal-input" placeholder="How many?">
+
+                    <label for="ticket-email" class="modal-label">
+                        <i class="ti-user"></i>
+                        Send to
+                    </label>
+                    <input id="ticket-email" type="email" class="modal-input" placeholder="Enter email...">
+
+                    <button id="buy-tickets">
+                        PAY <i class="ti-check"></i>
+                    </button>
+
+                </div>
+
+                <footer class="modal-footer">
+                    <p class="modal-help">Need <a href="">help?</a></p>
+                </footer>
+            </div>
         </div>
     </div>
     <script>
@@ -224,6 +260,31 @@
         }
 
 
+    </script>
+
+    <script>
+        const buyBtns = document.querySelectorAll('.js-buy-ticket')
+        const modal = document.querySelector('.js-modal')
+        const modalContainer = document.querySelector('.js-modal-container')
+        const modalClose = document.querySelector('.js-modal-close')
+
+        function showBuyTickets() {
+            modal.classList.add('open')
+        }
+
+        function hideBuyTickets() {
+            modal.classList.remove('open')
+        }
+
+        for(const buyBtn of buyBtns){
+            buyBtn.addEventListener('click', showBuyTickets)
+        }
+
+        modalClose.addEventListener('click', hideBuyTickets)
+        modal.addEventListener('click', hideBuyTickets)
+        modalContainer.addEventListener('click', function(event) {
+            event.stopPropagation()
+        })
     </script>
 </body>
 </html>
